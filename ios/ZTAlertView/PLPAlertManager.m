@@ -77,7 +77,6 @@ RCT_EXPORT_METHOD(alertWithArgs:(NSDictionary *)args
     NSString *cancelButtonKey = [RCTConvert NSString:args[@"cancelButtonKey"]];
     NSString *destructiveButtonKey = [RCTConvert NSString:args[@"destructiveButtonKey"]];
     UIKeyboardType keyboardType = [RCTConvert UIKeyboardType:args[@"keyboardType"]];
-    
     if (!title && !message) {
         RCTLogError(@"Must specify either an alert title, or message, or both");
         return;
@@ -192,7 +191,10 @@ RCT_EXPORT_METHOD(alertWithArgs:(NSDictionary *)args
             UIColor *color = [UIColor colorWithHexString:colorStr];
             [alertAction setValue:color forKey:@"titleTextColor"];
         }
-        
+        if(args[@"quare"] && [args[@"quare"][@"isQuare"] boolValue]){
+            UIView * subView =[alertController.view.subviews firstObject];
+            subView.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
+        }
         [alertController addAction:alertAction];
         
         

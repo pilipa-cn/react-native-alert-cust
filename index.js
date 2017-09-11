@@ -29,7 +29,9 @@ type Buttons = Array<{
 type Options = {
     cancelable?: ?boolean,
 };
-
+type Quare = {
+    isQuare?: ?boolean,
+};
 /**
  * Launches an alert dialog with the specified title and message.
  *
@@ -80,6 +82,7 @@ class Alert {
         title: ?string,
         message?: ?string,
     buttons?: Buttons,
+    quare?: Quare,
     options?: Options,
     type?: AlertType,
 ): void {
@@ -87,12 +90,12 @@ class Alert {
     if (Platform.OS === 'ios') {
     if (typeof type !== 'undefined') {
     console.warn('Alert.alert() with a 5th "type" parameter is deprecated and will be removed. Use AlertIOS.prompt() instead.');
-    AlertIOS.alert(title, message, buttons, type);
+    AlertIOS.alert(title, message, buttons,quare, type);
     return;
 }
-AlertIOS.alert(title, message, buttons);
+AlertIOS.alert(title, message, buttons,quare);
 } else if (Platform.OS === 'android') {
-    AlertAndroid.alert(title, message, buttons, options);
+    AlertAndroid.alert(title, message, buttons, quare,options);
 }
 }
 }
@@ -106,13 +109,15 @@ class AlertAndroid {
         title: ?string,
         message?: ?string,
     buttons?: Buttons,
-    options?: Options,
+    quare?: Quare,
+    options?: Options
 ): void {
         let config = {
     title: title || '',
     message: message || '',
 };
 
+    config = {...config,isQuare:(typeof quare === 'object' && typeof quare.isQuare === 'boolean')?quare.isQuare:false}
     if (options) {
         config = {...config, cancelable: options.cancelable};
     }

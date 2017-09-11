@@ -184,14 +184,14 @@ RCT_EXPORT_METHOD(alertWithArgs:(NSDictionary *)args
                                                                 }
                                                             }];
         
-        //在这里取颜色值
+        //???????
         
         NSString *colorStr =  buttonDic[@"1"];
         if ( colorStr.length > 0) {
             UIColor *color = [UIColor colorWithHexString:colorStr];
             [alertAction setValue:color forKey:@"titleTextColor"];
         }
-        if(args[@"quare"] && [args[@"quare"][@"isQuare"] boolValue]){
+        if(args[@"square"] && [args[@"square"][@"isSquare"] boolValue]){
             UIView * subView =[alertController.view.subviews firstObject];
             subView.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
         }

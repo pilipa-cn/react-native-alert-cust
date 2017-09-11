@@ -29,8 +29,8 @@ type Buttons = Array<{
 type Options = {
     cancelable?: ?boolean,
 };
-type Quare = {
-    isQuare?: ?boolean,
+type Square = {
+    isSquare?: ?boolean,
 };
 /**
  * Launches an alert dialog with the specified title and message.
@@ -82,7 +82,7 @@ class Alert {
         title: ?string,
         message?: ?string,
     buttons?: Buttons,
-    quare?: Quare,
+    square?: Square,
     options?: Options,
     type?: AlertType,
 ): void {
@@ -90,12 +90,12 @@ class Alert {
     if (Platform.OS === 'ios') {
     if (typeof type !== 'undefined') {
     console.warn('Alert.alert() with a 5th "type" parameter is deprecated and will be removed. Use AlertIOS.prompt() instead.');
-    AlertIOS.alert(title, message, buttons,quare, type);
+    AlertIOS.alert(title, message, buttons,square, type);
     return;
 }
-AlertIOS.alert(title, message, buttons,quare);
+AlertIOS.alert(title, message, buttons,square);
 } else if (Platform.OS === 'android') {
-    AlertAndroid.alert(title, message, buttons, quare,options);
+    AlertAndroid.alert(title, message, buttons, square,options);
 }
 }
 }
@@ -109,7 +109,7 @@ class AlertAndroid {
         title: ?string,
         message?: ?string,
     buttons?: Buttons,
-    quare?: Quare,
+    square?: Square,
     options?: Options
 ): void {
         let config = {
@@ -117,7 +117,7 @@ class AlertAndroid {
     message: message || '',
 };
 
-    config = {...config,isQuare:(typeof quare === 'object' && typeof quare.isQuare === 'boolean')?quare.isQuare:false}
+    config = {...config,isSquare:(typeof square === 'object' && typeof square.isSquare === 'boolean')?square.isSquare:false}
     if (options) {
         config = {...config, cancelable: options.cancelable};
     }

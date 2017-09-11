@@ -141,14 +141,14 @@ class PLPAlertIOS {
     static alert(title: ?string,
                  message?: ?string,
                  callbackOrButtons?: ?(() => void) | ButtonsArray,
-                 quare?: ?Object,
+                 square?: ?Object,
                  type?: AlertType,): void {
         if (typeof type !== 'undefined') {
             console.warn('AlertIOS.alert() with a 4th "type" parameter is deprecated and will be removed. Use AlertIOS.prompt() instead.');
-            this.prompt(title, message, callbackOrButtons, quare,type);
+            this.prompt(title, message, callbackOrButtons, square,type);
             return;
         }
-        this.prompt(title, message, callbackOrButtons, quare, 'default');
+        this.prompt(title, message, callbackOrButtons, square, 'default');
     }
 
     /**
@@ -199,7 +199,7 @@ class PLPAlertIOS {
     static prompt(title: ?string,
                   message?: ?string,
                   callbackOrButtons?: ?((text: string) => void) | ButtonsArray,
-                  quare?: ?Object,
+                  square?: ?Object,
                   type?: ?AlertType = 'plain-text',
                   defaultValue?: string,
                   keyboardType?: string): void {
@@ -214,7 +214,7 @@ class PLPAlertIOS {
             let defaultValue = message;
             RCTAlertManager.alertWithArgs({
                 title: title || undefined,
-                quare: typeof quare === 'object'?quare:{isQuare:false},
+                square: typeof square === 'object'?square:{isSquare:false},
                 type: 'plain-text',
                 defaultValue,
             }, (id, value) => {
@@ -268,7 +268,7 @@ class PLPAlertIOS {
             title: title || undefined,
             message: message || undefined,
             buttons,
-            quare: typeof quare === 'object'?quare:{isQuare:false},
+            square: typeof square === 'object'?square:{isSquare:false},
             type: type || undefined,
             defaultValue,
             cancelButtonKey,

@@ -83,13 +83,16 @@ public class AlertFragment extends DialogFragment implements DialogInterface.OnC
         Log.e("alertFragment", "自定义弹窗");
         LayoutInflater layoutView = (LayoutInflater) activityContext.getSystemService(activityContext.LAYOUT_INFLATER_SERVICE);
 
-        final Dialog dialog = new Dialog(activityContext, R.style.square_dialog_style);
+//        final Dialog dialog = new Dialog(activityContext, R.style.square_dialog_style);
 
-//      final Dialog dialog = new Dialog(activityContext, DialogModule.KEY_SQUARE ? R.style.square_dialog_style :R.style.ios_dialog_style);
+        String isSquare=arguments.getString(AlertFragment.ARG_SQUARE);
+
+      final Dialog dialog = new Dialog(activityContext, "true".equals(isSquare) ? R.style.square_dialog_style :R.style.ios_dialog_style);
         View layout = layoutView.inflate(R.layout.ios_dialog, null);
-        final Bundle args = new Bundle();
-        String isSquare=args.getString(AlertFragment.ARG_SQUARE);
-        Log.i("AlertFragment","我得知"+isSquare);
+
+        String title=arguments.getString(AlertFragment.ARG_TITLE);
+        Log.i("AlertFragment","isSquare的值是"+isSquare);
+        Log.i("AlertFragment","title的值是"+title);
 
         dialog.addContentView(layout, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));

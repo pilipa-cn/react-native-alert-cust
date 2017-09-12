@@ -43,7 +43,7 @@ public class DialogModule extends ReactContextBaseJavaModule implements Lifecycl
   /* package */ static final String ACTION_BUTTON_CLICKED = "buttonClicked";
   /* package */ static final String ACTION_DISMISSED = "dismissed";
   /* package */ static final String KEY_TITLE = "title";
-  /* package */ static final String KEY_SQUARE = "isQuare";
+  /* package */ static final String KEY_SQUARE = "isSquare";
   /* package */ static final String KEY_MESSAGE = "message";
   /* package */ static final String KEY_BUTTON_POSITIVE = "buttonPositive";
   /* package */ static final String KEY_BUTTON_NEGATIVE = "buttonNegative";

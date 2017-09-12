@@ -117,7 +117,7 @@ class AlertAndroid {
     message: message || '',
 };
 
-    config = {...config,isSquare:(typeof square === 'object' && typeof square.isSquare === 'boolean')?square.isSquare:false}
+    config = {...config,isSquare:(typeof square === 'object' && typeof square.isSquare === 'boolean')?'true' :'false'}
     if (options) {
         config = {...config, cancelable: options.cancelable};
     }

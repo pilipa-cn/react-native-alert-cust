@@ -11,6 +11,7 @@ package cn.pilipa.alert;
 
 import javax.annotation.Nullable;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import android.app.Activity;
@@ -42,6 +43,7 @@ public class DialogModule extends ReactContextBaseJavaModule implements Lifecycl
   /* package */ static final String ACTION_BUTTON_CLICKED = "buttonClicked";
   /* package */ static final String ACTION_DISMISSED = "dismissed";
   /* package */ static final String KEY_TITLE = "title";
+  /* package */ static final String KEY_SQUARE = "isQuare";
   /* package */ static final String KEY_MESSAGE = "message";
   /* package */ static final String KEY_BUTTON_POSITIVE = "buttonPositive";
   /* package */ static final String KEY_BUTTON_NEGATIVE = "buttonNegative";
@@ -66,6 +68,12 @@ public class DialogModule extends ReactContextBaseJavaModule implements Lifecycl
   public String getName() {
     return NAME;
   }
+
+//  public static Map<String, Object> getCONSTANTS() {
+//    final Map<String, Object> constants = new HashMap<>();
+//    constants.put()
+//    return CONSTANTS;
+//  }
 
   /**
    * Helper to allow this module to work with both the standard FragmentManager
@@ -228,6 +236,9 @@ public class DialogModule extends ReactContextBaseJavaModule implements Lifecycl
     }
 
     final Bundle args = new Bundle();
+    if (options.hasKey(KEY_SQUARE)) {
+      args.putString(AlertFragment.ARG_SQUARE, options.getString(KEY_SQUARE));
+    }
     if (options.hasKey(KEY_TITLE)) {
       args.putString(AlertFragment.ARG_TITLE, options.getString(KEY_TITLE));
     }
@@ -276,4 +287,6 @@ public class DialogModule extends ReactContextBaseJavaModule implements Lifecycl
       return new FragmentManagerHelper(activity.getFragmentManager());
     }
   }
+
+
 }

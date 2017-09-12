@@ -44,6 +44,22 @@ Alert.alert('标题', '确定退出\n退出后将重新登录', [
         style: 'cancel'
     }]);
 ```
+add a object to control modal radius ,default isSquare:false
+
+```javascript
+Alert.alert('标题', '确定退出\n退出后将重新登录', [
+    {
+        text: "取消",
+        onPress: ()=>{
+            console.log('you clicked cancel');
+        },
+        color: "#009696",
+        style: 'cancel'
+    }],
+    {
+        isSquare:true
+     });
+```
 
 **Android**
 

@@ -31,7 +31,7 @@ export default class App extends React.Component {
                 },
                 // color: "#EF0C35"
             }
-        ],{isSquare:true});
+        ]);
     }
 
     showSingleAlert() {
